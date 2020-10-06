@@ -4,4 +4,4 @@ lib
 pyvenv.cfg
 uploads
 *.sqlite
-*.DS_Store
+.DS_Store
