@@ -5,3 +5,4 @@ pyvenv.cfg
 uploads
 *.sqlite
 .DS_Store
+__pycache__
