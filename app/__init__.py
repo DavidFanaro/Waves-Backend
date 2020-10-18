@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from app.config import Config, ProductionConfig, DevelopmentConfig
@@ -16,4 +16,4 @@ from routes.comment_route import *
 
 @app.route("/")
 def index():
-    return 'Welcome to Wave (Soundcloud clone)'
+    return render_template("Home.html")
