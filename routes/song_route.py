@@ -61,7 +61,7 @@ def upload():
                     db.session.commit()
 
                     try:
-                        bucket.Object(f.filename).put(Body=f,ACL='public-read')
+                        bucket.Object(f.filename).put(ACL='public-read',Body=f)
                     except :
                         return "Unknown Error", 500
                     
