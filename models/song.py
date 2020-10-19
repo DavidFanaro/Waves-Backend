@@ -10,7 +10,7 @@ class Song(db.Model):
     id = db.Column(db.Text, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     desc = db.Column(db.String(50), nullable=False)
-    url = db.Column(db.String(50), nullable=False)
+    url = db.Column(db.Text, nullable=False)
     created_at = db.Column(
         db.DateTime, default=datetime.utcnow, nullable=False)
     update_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
