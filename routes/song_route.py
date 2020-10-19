@@ -88,6 +88,7 @@ def Songs():
         for song in songs:
             user = User.query.filter_by(id = song.user_id).first()
             i = {
+                "id": song.id,
                 "title": song.name,
                 "desc": song.desc,
                 "url": song.url,
@@ -105,5 +106,12 @@ def Songs():
 @app.route('/api/v1/song/<id>')
 def getSong(id):
     song = Song.query.filter_by(id = id).first()
+    user = User.query.filter_by(id = song.user_id).first()
 
-    return send_file(song.url),200
+    return {
+        "id": song.id,
+        "title": song.name,
+        "desc": song.desc,
+        "url": song.url,
+        "user": user.first_name + " " + user.last_name
+    }
