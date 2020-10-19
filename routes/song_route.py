@@ -58,11 +58,9 @@ def upload():
 
                         song = Song(name, desc, url, user.id)
                     # f.save(url)
-
-                        bucket.Object(f.filename).put(Body=f,ACL='public-read')
-
                         db.session.add(song)
                         db.session.commit()
+                        bucket.Object(f.filename).put(Body=f,ACL='public-read')
                     except :
                         return "Unknown Error", 500
                     
