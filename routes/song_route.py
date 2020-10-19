@@ -51,15 +51,16 @@ def upload():
             if request.files is not None:
                 f = request.files['file']
                 if f and allowed_file(f.filename):
-                    try:
-                        name = request.form['title']
-                        desc = request.form['desc']
-                        url = "https://waves-test-bucket.s3.us-east-2.amazonaws.com/" + f.filename
 
-                        song = Song(name, desc, url, user.id)
-                    # f.save(url)
-                        db.session.add(song)
-                        db.session.commit()
+                    name = request.form['title']
+                    desc = request.form['desc']
+                    url = "https://waves-test-bucket.s3.us-east-2.amazonaws.com/" + f.filename
+
+                    song = Song(name, desc, url, user.id)
+                    db.session.add(song)
+                    db.session.commit()
+
+                    try:
                         bucket.Object(f.filename).put(Body=f,ACL='public-read')
                     except :
                         return "Unknown Error", 500
