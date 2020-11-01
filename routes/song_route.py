@@ -61,7 +61,7 @@ def upload():
                     db.session.commit()
 
                     try:
-                        bucket.Object(f.filename).put(ACL='public-read',Body=f)
+                        bucket.Object(f.filename).put(ACL='public-read',Body=f,Metadata={'Content-Type': 'audio/mpeg'})
                     except :
                         return "Unknown Error", 500
                     
