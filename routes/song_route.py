@@ -54,7 +54,7 @@ def upload():
 
                     name = request.form['title']
                     desc = request.form['desc']
-                    url = "https://waves-main-bucket.s3.us-east-2.amazonaws.com/" + f.filename
+                    url = "https://waves-main-bucket.s3.us-east-2.amazonaws.com/" + f.filename.replace(" ","+")
 
                     song = Song(name, desc, url, user.id)
                     db.session.add(song)
